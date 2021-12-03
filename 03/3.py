@@ -21,12 +21,7 @@ def part_1(diagnostics):
     return gamma_int * epsilon_int
 
 
-def remove_with_char_at_index(list, char, i):
-    return [value for value in list if value[i] != char ]
-
-
 def prune_diagnostics(diagnostics, pref):
-    rating = 0
     for i in range(len(diagnostics[0])):
         one_count = 0
         zero_count = 0
@@ -35,12 +30,14 @@ def prune_diagnostics(diagnostics, pref):
                 one_count += 1
             else:
                 zero_count += 1
+                
         if one_count >= zero_count:
             prune_char = '0' if pref == 'max' else '1'
-            diagnostics = remove_with_char_at_index(diagnostics, prune_char, i)
         else:
-            reverse_char = '1' if pref == 'max' else '0'
-            diagnostics = remove_with_char_at_index(diagnostics, reverse_char, i)
+            prune_char = '1' if pref == 'max' else '0'
+        
+        diagnostics = [value for value in diagnostics if value[i] != prune_char]
+        
         if len(diagnostics) == 1:
             rating = int(diagnostics[0],2)
             break
