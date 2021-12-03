@@ -29,7 +29,7 @@ def part_2(nums):
     print(increased_count)
 
 if __name__ == '__main__':
-    filename = './1/input.txt'
+    filename = './01/input.txt'
     nums = read_input(filename)
     part_1(nums)
     part_2(nums)
