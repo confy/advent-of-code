@@ -32,7 +32,7 @@ def part_2(instructions):
 
 
 if __name__ == '__main__':
-    filename = './2/input.txt'
+    filename = './02/input.txt'
     instructions = read_input(filename)
     dist, depth = part_1(instructions)
     print(f"Part 1 - Distance={dist} Depth={depth} Multiplied={dist * depth}")
