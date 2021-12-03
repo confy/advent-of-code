@@ -54,7 +54,7 @@ def part_2(diagnostics):
     return oxygen_generator_rating, co2_generator_rating
             
 if __name__ == '__main__':
-    filename = './3/input.txt'
+    filename = './03/input.txt'
     diagnostics = read_input(filename)
     print(part_1(diagnostics))
     oxygen_generator_rating, co2_generator_rating = part_2(diagnostics)
