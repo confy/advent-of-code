@@ -27,11 +27,8 @@ def check_board(board, called_so_far):
     board_cols = list(map(list, itertools.zip_longest(*board, fillvalue=None)))
     for row in board:
         if check_row(row, called_so_far):
-            return True, board
-    for col in board_cols:
-        if check_row(col, called_so_far):
-            return True, board
-    return False, board
+            return True
+    return any(check_row(col, called_so_far) for col in board_cols)
 
 
 def print_result(board, called_so_far):
@@ -51,7 +48,7 @@ if __name__ == '__main__':
         for i, board in enumerate(boards):
             if board == []:
                 continue
-            result, board = check_board(board, called_so_far)
+            result = check_board(board, called_so_far)
             if result == True:
                 print_result(board, called_so_far)
                 boards[i] = []
