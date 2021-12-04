@@ -34,12 +34,18 @@ def check_board(board, called_so_far):
     return False, board
 
 
+def print_result(board, called_so_far):
+    vals_to_sum = []
+    for row in board:
+        for val in row:
+            if val not in called_so_far:
+                vals_to_sum.append(val)
+    print(sum(vals_to_sum)*called_so_far[-1])
+
 if __name__ == '__main__':
     calls, boards = read_input('./04/input.txt')
     called_so_far = calls[:5]
     calls = calls[5:]
-    winners = []
-    called_at_last_win = []
 
     for call in calls:
         for i, board in enumerate(boards):
@@ -47,17 +53,8 @@ if __name__ == '__main__':
                 continue
             result, board = check_board(board, called_so_far)
             if result == True:
-                winners.append(board)
-                called_at_last_win = called_so_far
+                print_result(board, called_so_far)
                 boards[i] = []
-
         if any(board != [] for board in boards):
             called_so_far.append(call)
-
-    vals_to_sum = []
-    for row in winners[-1]:
-        for val in row:
-            if val not in called_at_last_win:
-                vals_to_sum.append(val)
-
-    print(sum(vals_to_sum)*called_at_last_win[-1])
+    
