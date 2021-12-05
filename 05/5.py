@@ -2,7 +2,7 @@ from collections import defaultdict
 
 
 def read_input(filename):
-    with open("./05/input.txt") as f:
+    with open(filename, 'r') as f:
         lines = [i.strip() for i in f.readlines()]
     segs = []
     for line in lines:
