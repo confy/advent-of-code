@@ -1,12 +1,10 @@
 def read_input(filename):
     with open(filename, 'r') as f:
-        nums = f.readline().strip().split(',')
-    return [int(n) for n in nums]
+        return [int(n) for n in f.readline().strip().split(',')]
 
 
-def part_1_naive():
+def part_1_naive(nums):
     """ bad for 256 iterations :)"""
-    nums = read_input("./06/input.txt")
     for i in range(80):
         for i in range(len(nums)):
             if nums[i] == 0:
@@ -19,8 +17,7 @@ def part_1_naive():
 
 def read_input_to_dict(filename):
     with open(filename, 'r') as f:
-        nums = f.readline().strip().split(',')
-    nums = [int(n) for n in nums]
+        nums = [int(n) for n in f.readline().strip().split(',')]
     return {i: nums.count(i) for i in range(9)}
 
 
@@ -39,6 +36,7 @@ def fishies(fish):
 
 
 if __name__ == '__main__':
-    part_1_naive()
+    nums = read_input("./06/input.txt")
+    part_1_naive(nums)
     fish = read_input_to_dict('./06/input.txt')
     fishies(fish)
