@@ -1,3 +1,3 @@
-# advent-of-code-2021
+# advent-of-code
 
 emojis are very important
