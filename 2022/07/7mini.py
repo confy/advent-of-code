@@ -1,5 +1,5 @@
 with open('./2022/07/input.txt')as f:text=f.read()
-files,folders,parents={},set(),[]
+files,folders,parents,part_1,fsizes={},set(),[],0,{}
 for line in text.split('\n'):
 	if line.startswith('$'):
 		if line.startswith('$ cd'):
@@ -12,8 +12,6 @@ for line in text.split('\n'):
 		if size=='dir':continue
 		size=int(size);files['/'.join(parents+[name])]=size
 	folders.add('/'.join(parents))
-part_1=0
-fsizes={}
 for folder in folders:
 	fsize=sum((value for(file,value)in files.items()if file.startswith(folder)))
 	if fsize<=100000:part_1+=fsize
