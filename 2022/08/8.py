@@ -10,21 +10,18 @@ for i, line in enumerate(fields):
             continue
 
         east = [int(t) for t in line[j+1:]]
-        west = [int(t) for t in line[:j]]
-        north = [int(l[j])for k, l in enumerate(fields) if k < i]
+        west = [int(t) for t in line[:j]][::-1]
+        north = [int(l[j])for k, l in enumerate(fields) if k < i][::-1]
         south = [int(l[j]) for k, l in enumerate(fields) if k > i]
-        west.reverse()
-        north.reverse()
-
+    
         visible = False
         score = 1
         for direction in [east, west, north, south]:
             dist = 0
             for t in direction:
-                if t >= int(tree):
-                    dist += 1
-                    break
                 dist += 1
+                if t >= int(tree):
+                    break
             score *= dist
             if not visible and int(tree) > max(direction):
                 part_1 += 1
