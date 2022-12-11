@@ -9,5 +9,4 @@ for i in range(240):
         if o[l]=="noop":c+=1;b+=1;l+=1
         elif o[l][:4]=="addx":p=True;c+=1;b+=1
     elif p==True:c+=1;b+=1;x+=int(o[l][4:]);l+=1;p=False
-
 print(t)
